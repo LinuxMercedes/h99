@@ -12,5 +12,20 @@ True
 -}
 
 isPalindrome :: (Eq a) => [a] -> Bool
-isPalindrome xs = 
+isPalindrome xs = reverse xs == xs
+{- Because I'm a masochist
+isPalindrome [] = True
+isPalindrome (x:[]) = True
+isPalindrome (x:y:[]) = x == y
+isPalindrome (xs) = 
+	if head xs == last xs then 
+		isPalindrome $ tail $ init xs 
+	else 
+		False
+-}
+
+main = do 
+	print $ isPalindrome [1,2,3]
+	print $ isPalindrome "madamimadam"
+	print $ isPalindrome [1,2,4,8,16,8,4,2,1]
 
