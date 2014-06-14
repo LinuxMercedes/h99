@@ -25,4 +25,4 @@ flatten (List xs) = foldl (\acc x -> acc ++ (flatten x)) [] xs
 main = do
 	print $ flatten (Elem 5)
 	print $ flatten (List [Elem 1, List [Elem 2, List [Elem 3, Elem 4], Elem 5]])
-	print $ (flatten (List []) :: [Int]) -- type cast empty list since print can't infer what it should be
+	print $ (flatten (List []) :: [Int]) -- typecast empty list since print can't infer what it should be
