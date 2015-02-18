@@ -11,14 +11,14 @@
 
 -}
 
-_compress :: (Eq a) => a -> [a] -> [a] 
-_compress x acc
-	| acc == [] = [x]
-	| x == head acc = acc
-	| otherwise = x:acc
 
 compress :: (Eq a) => [a] -> [a]
 compress xs = foldr _compress [] xs
+	where
+		_compress x acc
+			| acc == [] = [x]
+			| x == head acc = acc
+			| otherwise = x:acc
 
 main = do
 	print $ compress "aaaabccaadeeee"

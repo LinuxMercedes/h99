@@ -10,14 +10,14 @@
 
 -}
 
-_pack :: (Eq a) => a -> [[a]] -> [[a]]
-_pack x (acc:accs)
-	| x == head acc = (x:acc):accs
-  | otherwise = [x]:acc:accs
-_pack x [] = [[x]]
-
 pack :: (Eq a) => [a] -> [[a]]
 pack xs = foldr _pack [] xs
+	where 
+		_pack x [] = [[x]]
+		_pack x (acc:accs)
+			| x == head acc = (x:acc):accs
+			| otherwise = [x]:acc:accs
+
 
 main = do
 	print $ pack ['a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e']
