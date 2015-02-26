@@ -24,9 +24,9 @@ pack xs = foldr _pack [] xs
 encode :: (Eq a) => [a] -> [(Int, a)]
 encode xs = map (\xs -> (length xs, head xs)) $ pack xs
 
-data RLE = Multiple Int Char | Single Char deriving Show
+data RLE a = Multiple Int a | Single a deriving Show
 
-encodeModified :: [Char] -> [RLE]
+encodeModified :: Eq a => [a] -> [RLE a]
 encodeModified chars = map _enc $ encode chars
 	where
 		_enc (1, x) = Single x
